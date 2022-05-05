@@ -2,20 +2,20 @@ import React from "react";
 
 import NoImage from './no-image-placeholder.jpg';
 
-const MediaCard = ({ mediaData }) => {
+const MediaCard = ({ media }) => {
     return (
         <div className="media">
             <div>
-                <p>{mediaData.Year}</p>
+                <p>{media.Year}</p>
             </div>
 
             <div>
-                <img src={mediaData.Poster !== 'N/A' ? mediaData.Poster : NoImage} alt={mediaData.Title}/>
+                <img src={media.Poster !== 'N/A' ? media.Poster : NoImage} alt={media.Title}/>
             </div>
 
             <div>
-                <span>{mediaData.Type}</span>
-                <h3>{mediaData.Title}</h3>
+                <span>{media.Type}</span>
+                <h3>{media.Title}</h3>
             </div>
         </div>
     )

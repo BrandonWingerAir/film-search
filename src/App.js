@@ -42,7 +42,9 @@ const App = () => {
                 mediaData?.length > 0
                     ? (
                         <div className="container">
-                            <MediaCard mediaData={mediaData[0]} />
+                            {mediaData.map((media) => (
+                                <MediaCard media={media} />
+                            ))}
                         </div>
                     ) :
                         <div className="noResults">
