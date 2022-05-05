@@ -9,6 +9,7 @@ const API_URL = 'http://www.omdbapi.com?apikey=API_KEY';
 
 const App = () => {
     const [mediaData, setMediaData] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
 
     const searchMedia = async (title) => {
         const response = await fetch(`${API_URL}&s=${title}`);
@@ -18,7 +19,7 @@ const App = () => {
     }
 
     useEffect(() => {
-        searchMedia('Batman');
+        searchMedia('');
     }, []);
 
     return (
@@ -28,13 +29,13 @@ const App = () => {
             <div className="search">
                 <input
                     placeholder="Search..."
-                    value=""
-                    onChange={() => {}}
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                 />
                 <img
                     src={SearchIcon}
                     alt="search"
-                    onClick={() => {}}
+                    onClick={() => searchMedia(searchTerm)}
                 />
             </div>
 
