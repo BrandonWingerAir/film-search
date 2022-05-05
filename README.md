@@ -4,7 +4,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## API Access
 
-Replace "API_KEY" in App.js with a key from omdbapi.
+Refer to .env template file.
 
 ## Available Scripts
 

@@ -5,7 +5,7 @@ import MediaCard from './MediaCard';
 import './App.css';
 import SearchIcon from './search.svg';
 
-const API_URL = 'http://www.omdbapi.com?apikey=API_KEY';
+const API_URL = `http://www.omdbapi.com?apikey=${process.env.REACT_APP_OMDB_API_KEY}`;
 
 const App = () => {
     const [mediaData, setMediaData] = useState([]);
