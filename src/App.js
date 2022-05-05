@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 
+import MediaCard from './MediaCard';
+
 import './App.css';
 import SearchIcon from './search.svg';
-import NoImage from './no-image-placeholder.jpg';
 
 const API_URL = 'http://www.omdbapi.com?apikey=API_KEY';
 
-const mediaTest = {
+const mediaData = {
     "Title": "Spiderman",
     "Year": "2010",
     "imdbID": "tt1785572",
@@ -44,20 +45,7 @@ const App = () => {
             </div>
 
             <div className="container">
-                <div className="media">
-                    <div>
-                        <p>{mediaTest.Year}</p>
-                    </div>
-
-                    <div>
-                        <img src={mediaTest.Poster !== 'N/A' ? mediaTest.Poster : NoImage} alt={mediaTest.Title}/>
-                    </div>
-
-                    <div>
-                        <span>{mediaTest.Type}</span>
-                        <h3>{mediaTest.Title}</h3>
-                    </div>
-                </div>
+                <MediaCard mediaData={mediaData} />
             </div>
         </div>
     );
