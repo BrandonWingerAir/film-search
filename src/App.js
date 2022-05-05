@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 import MediaCard from './MediaCard';
 
@@ -7,24 +7,18 @@ import SearchIcon from './search.svg';
 
 const API_URL = 'http://www.omdbapi.com?apikey=API_KEY';
 
-const mediaData = {
-    "Title": "Spiderman",
-    "Year": "2010",
-    "imdbID": "tt1785572",
-    "Type": "movie",
-    "Poster": "N/A"
-}
-
 const App = () => {
+    const [mediaData, setMediaData] = useState([]);
+
     const searchMedia = async (title) => {
         const response = await fetch(`${API_URL}&s=${title}`);
         const data = await response.json();
 
-        console.log(data.Search);
+        setMediaData(data.Search);
     }
 
     useEffect(() => {
-        searchMedia('Spiderman');
+        searchMedia('Batman');
     }, []);
 
     return (
@@ -44,9 +38,17 @@ const App = () => {
                 />
             </div>
 
-            <div className="container">
-                <MediaCard mediaData={mediaData} />
-            </div>
+            {
+                mediaData?.length > 0
+                    ? (
+                        <div className="container">
+                            <MediaCard mediaData={mediaData[0]} />
+                        </div>
+                    ) :
+                        <div className="noResults">
+                            <h2>No results found.</h2>
+                        </div>
+            }
         </div>
     );
 }
